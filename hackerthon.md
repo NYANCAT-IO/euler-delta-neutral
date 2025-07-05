@@ -16,18 +16,7 @@ Interface descriptions, architecture, and whitepaper docs
 ./euler-swap/docs
 ↗
 Security audit with other helpful information
-https://github.com/euler-xyz/euler-swap/blob/master/audits/ChainSecurity_EulerSwap_audit.pdf
+./audit.md
 ↗
 Blog
-https://euler.finance/blog/introducing-eulerswap
-↗
-Resources
-EulerSwap interface descriptions, architecture, and whitepaper docs
-https://github.com/euler-xyz/euler-swap/tree/master/docs
-↗
-ChainSecurity audit with helpful overviews
-https://github.com/euler-xyz/euler-swap/blob/master/audits/ChainSecurity_EulerSwap_audit.pdf
-↗
-EulerSwap Blog
-https://euler.finance/blog/introducing-eulerswap
-↗
+./blog.md

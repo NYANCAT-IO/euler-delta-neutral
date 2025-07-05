@@ -185,17 +185,70 @@ if not API_KEY:
 
 ### 9. Testing and Validation
 
-#### Before Committing
+#### Code Quality Tools Available
+- **Ruff v0.8.2**: Ultra-fast Python linter and formatter (Rust-based, 10-100x faster)
+- **Black v24.8.0**: The uncompromising Python code formatter
+- **Python AST**: Built-in syntax validation
+
+#### Before Committing (MANDATORY)
 ```bash
-# Run basic syntax checks
+# 1. Fast syntax validation
 python -m py_compile src/**/*.py
 
-# Run notebooks to ensure they execute
+# 2. Code formatting and linting (REQUIRED)
+ruff format .                    # Format all Python code
+ruff check --fix .              # Fix auto-fixable issues
+
+# 3. Final validation
+ruff check .                    # Ensure no remaining issues
+
+# 4. Notebook execution test
 jupyter nbconvert --execute notebooks/*.ipynb --to python
 
-# Check for common issues
+# 5. Check for incomplete work
 grep -r "TODO" . --exclude-dir=.git
 grep -r "FIXME" . --exclude-dir=.git
+
+# 6. Verify all checks pass
+echo "✅ All validation completed successfully"
+```
+
+#### Ruff Configuration (ruff.toml)
+```toml
+[tool.ruff]
+line-length = 88
+target-version = "py311"
+
+[tool.ruff.lint]
+select = [
+    "E",  # pycodestyle errors
+    "W",  # pycodestyle warnings  
+    "F",  # pyflakes
+    "I",  # isort
+    "B",  # flake8-bugbear
+    "C4", # flake8-comprehensions
+    "UP", # pyupgrade
+]
+ignore = [
+    "E501", # line too long (black handles this)
+    "B008", # function calls in argument defaults
+]
+
+[tool.ruff.format]
+quote-style = "double"
+indent-style = "space"
+```
+
+#### Performance Comparison
+- **Ruff**: ~0.5s for entire project (format + lint)
+- **Black**: ~2-5s for entire project (format only)
+- **Traditional tools**: 30-60s for full validation
+
+#### Alternative: Black Formatting
+```bash
+# If you prefer Black's formatting style
+black .                         # Format code
+black --diff .                  # Preview changes
 ```
 
 #### Data Validation
