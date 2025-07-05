@@ -1,0 +1,6 @@
+[submodule "euler-swap"]
+	path = euler-swap
+	url = https://github.com/euler-xyz/ethereum-vault-connector.git
+[submodule "query-examples"]
+	path = query-examples
+	url = https://github.com/graphprotocol/query-examples.git
